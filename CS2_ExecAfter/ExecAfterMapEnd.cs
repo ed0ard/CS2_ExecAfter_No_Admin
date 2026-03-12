@@ -15,45 +15,37 @@ namespace CS2_ExecAfter
 		{
 			if (!string.IsNullOrEmpty(exec_after_map_end))
 			{
-				ReplyToCommand($"Executing (map end): {exec_after_map_end}");
 				Server.ExecuteCommand(exec_after_map_end);
 			}
 			if (!string.IsNullOrEmpty(exec_after_map_end_once))
 			{
-				ReplyToCommand($"Executing once (map end): {exec_after_map_end_once}");
 				Server.ExecuteCommand(exec_after_map_end_once);
 				exec_after_map_end_once = null;
 			}
 		}
 
 		[ConsoleCommand("exec_after_map_end", "Executes a command every time the map ends")]
-		[RequiresPermissions("@css/rcon")]
 		public void ConVarExecAfterMapEnd(CCSPlayerController? player, CommandInfo command)
 		{
 			string args = command.ArgString.Trim();
 			if (string.IsNullOrEmpty(args))
 			{
-				ReplyToCommand($"exec_after_map_end = {exec_after_map_end}", player);
 				return;
 			}
 			args = StripQuotes(args);
 			exec_after_map_end = args;
-			ReplyToCommand($"exec_after_map_end = {exec_after_map_end}", player);
 		}
 
 		[ConsoleCommand("exec_after_map_end_once", "Executes a command when the map ends")]
-		[RequiresPermissions("@css/rcon")]
 		public void ConVarExecAfterMapEndOnce(CCSPlayerController? player, CommandInfo command)
 		{
 			string args = command.ArgString.Trim();
 			if (string.IsNullOrEmpty(args))
 			{
-				ReplyToCommand($"exec_after_map_end_once = {exec_after_map_end_once}", player);
 				return;
 			}
 			args = StripQuotes(args);
 			exec_after_map_end_once = args;
-			ReplyToCommand($"exec_after_map_end_once = {exec_after_map_end_once}", player);
 		}
 
 	}
